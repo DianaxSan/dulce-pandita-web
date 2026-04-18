@@ -20,7 +20,7 @@ export const loginAdmin = async (username, password) => {
 
 //PRODUCTOS
 export const fetchProducts = async () => {
-  const res = await fetch(`${API_URLL}/productos`);
+  const res = await fetch(`${API_URL}/productos`);
   const data = await res.json();
   return data.productos;
 };
