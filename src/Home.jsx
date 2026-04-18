@@ -94,7 +94,7 @@ function Home() {
                     <div className="product-footer">
                       <span className="price">S/ {p.precio}</span>
                       <a
-                        href={`https://wa.me/51920480984?text=Hola, quiero el producto: ${encodeURIComponent(
+                        href={`https://wa.me/51973914045?text=Hola, quiero el producto: ${encodeURIComponent(
                           p.nombre
                         )}`}
                         target="_blank"
@@ -124,7 +124,7 @@ function Home() {
             </div>
             <div className="footer-section">
               <h3>Contacto</h3>
-              <p>📱 +51 999 999 999</p>
+              <p>📱 +51 973 914 045</p>
               <p>📧 info@dulcepandita.com</p>
             </div>
             <div className="footer-section">
