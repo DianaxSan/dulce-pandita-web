@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { createProduct } from "../services/api";
+import "../styles/login.css";
 
 function Admin() {
   const [nombre, setNombre] = useState("");
@@ -10,6 +11,9 @@ function Admin() {
   const [preview, setPreview] = useState(null);
   const [status, setStatus] = useState("");
   const [error, setError] = useState("");
+  const [showLogoutModal, setShowLogoutModal] = useState(false);
+  
+  const navigate = useNavigate();
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
@@ -19,6 +23,11 @@ function Admin() {
     } else {
       setPreview(null);
     }
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/login");
   };
 
   const subirProducto = async () => {
@@ -47,23 +56,21 @@ function Admin() {
         body: formData,
       });
 
-        const data = await res.json();
+      const data = await res.json();
 
-        if (!data.secure_url) {
-            throw new Error("Error subiendo imagen a Cloudinary");
-        }
+      if (!data.secure_url) {
+        throw new Error("Error subiendo imagen a Cloudinary");
+      }
 
-        const imageUrl = data.secure_url;
+      const imageUrl = data.secure_url;
 
       await createProduct({
-  nombre,
-  precio,
-  descripcion,
-  imagen: imageUrl,
-});
-      if (!response.ok) {
-        throw new Error("Error en el servidor");
-      }
+        nombre,
+        precio,
+        descripcion,
+        imagen: imageUrl,
+      });
+
 
       setStatus("Producto creado con éxito 🚀");
       setNombre("");
@@ -99,6 +106,14 @@ function Admin() {
           <button className="admin-button">Ver ventas</button>
           <button className="admin-button secondary">Soporte</button>
         </div>
+
+        <button 
+          className="logout-button" 
+          onClick={() => setShowLogoutModal(true)}
+          style={{ width: "100%", marginTop: "20px" }}
+        >
+          🚪 Cerrar sesión
+        </button>
       </aside>
 
       <main className="admin-main">
@@ -220,6 +235,32 @@ function Admin() {
           <p>Aquí podrás ajustar datos del negocio, horarios y contactos.</p>
         </section>
       </main>
+
+      {/* Modal de confirmación de logout */}
+      {showLogoutModal && (
+        <div className="logout-modal">
+          <div className="logout-modal-content">
+            <div className="logout-modal-header">¿Cerrar sesión?</div>
+            <div className="logout-modal-message">
+              Se cerrará tu sesión y serás redirigido a la página de inicio de sesión.
+            </div>
+            <div className="logout-modal-actions">
+              <button 
+                className="logout-modal-cancel"
+                onClick={() => setShowLogoutModal(false)}
+              >
+                Cancelar
+              </button>
+              <button 
+                className="logout-modal-confirm"
+                onClick={handleLogout}
+              >
+                Cerrar sesión
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
