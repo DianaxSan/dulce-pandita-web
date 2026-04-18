@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import Admin from "./pages/Admin";
 import Login from "./pages/Login";
 import PrivateRoute from "./components/PrivateRoute";
+import "./styles/App.css";
 
 function App() {
   return (
