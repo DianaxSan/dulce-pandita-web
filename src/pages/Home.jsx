@@ -1,19 +1,12 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaWhatsapp } from "react-icons/fa";
+import useProductos from "../hooks/useProductos";
 
 function Home() {
-  const [productos, setProductos] = useState([]);
   const [menuOpen, setMenuOpen] = useState(false);
+  const { productos, loading } = useProductos();
 
-  useEffect(() => {
-    fetch("https://backend-pandi.onrender.com/productos")
-      .then((res) => res.json())
-      .then((data) => {
-        setProductos(data.productos || []);
-      })
-      .catch((err) => console.error(err));
-  }, []);
 
   return (
     <div className="app">
@@ -77,7 +70,10 @@ function Home() {
       <section className="products" id="productos">
         <div className="container">
           <h2>Nuestros Productos</h2>
-          {productos.length > 0 ? (
+
+          {loading ? (
+            <p className="loading">Cargando productos...</p>
+          ) : (
             <div className="products-grid">
               {productos.map((p) => (
                 <div key={p.id} className="product-card">
@@ -88,11 +84,14 @@ function Home() {
                       <span className="emoji">🍰</span>
                     )}
                   </div>
+
                   <div className="product-info">
                     <h3>{p.nombre}</h3>
                     <p className="description">{p.descripcion}</p>
+
                     <div className="product-footer">
                       <span className="price">S/ {p.precio}</span>
+
                       <a
                         href={`https://wa.me/51973914045?text=Hola, quiero el producto: ${encodeURIComponent(
                           p.nombre
@@ -100,7 +99,6 @@ function Home() {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="whatsapp-btn"
-                        aria-label="Pedir por WhatsApp"
                       >
                         <FaWhatsapp size={24} />
                       </a>
@@ -109,9 +107,8 @@ function Home() {
                 </div>
               ))}
             </div>
-          ) : (
-            <p className="loading">Cargando productos...</p>
           )}
+
         </div>
       </section>
 

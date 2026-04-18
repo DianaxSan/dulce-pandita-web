@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { createProduct } from "../services/api";
 
 function Admin() {
   const [nombre, setNombre] = useState("");
@@ -54,19 +55,12 @@ function Admin() {
 
         const imageUrl = data.secure_url;
 
-      const response = await fetch("https://backend-pandi.onrender.com/productos", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          nombre,
-          precio,
-          descripcion,
-          imagen: imageUrl,
-        }),
-      });
-
+      await createProduct({
+  nombre,
+  precio,
+  descripcion,
+  imagen: imageUrl,
+});
       if (!response.ok) {
         throw new Error("Error en el servidor");
       }
