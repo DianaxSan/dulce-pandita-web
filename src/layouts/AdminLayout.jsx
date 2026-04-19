@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import "../styles/admin.css";
 
 function AdminLayout({ children }) {
   const [showLogoutModal, setShowLogoutModal] = useState(false);
