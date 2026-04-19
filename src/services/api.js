@@ -49,3 +49,35 @@ if (!response.ok) {
 
   return response.json();
 };
+
+// ACTUALIZAR
+export const updateProduct = async (id, product) => {
+  const token = localStorage.getItem("token");
+
+  const res = await fetch(`${API_URL}/productos/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${token}`,
+    },
+    body: JSON.stringify(product),
+  });
+
+  if (!res.ok) throw new Error("Error al actualizar");
+  return res.json();
+};
+
+// ELIMINAR
+export const deleteProduct = async (id) => {
+  const token = localStorage.getItem("token");
+
+  const res = await fetch(`${API_URL}/productos/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Authorization": `Bearer ${token}`,
+    },
+  });
+
+  if (!res.ok) throw new Error("Error al eliminar");
+  return res.json();
+};

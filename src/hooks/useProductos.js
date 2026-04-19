@@ -5,21 +5,22 @@ const useProductos = () => {
   const [productos, setProductos] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const loadProductos = async () => {
+    try {
+      const data = await fetchProducts();
+      setProductos(data);
+    } catch (error) {
+      console.error('Error fetching products:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
-    const loadProducts = async () => {
-      try {
-        const data = await fetchProducts();
-        setProductos(data);
-      } catch (error) {
-        console.error('Error fetching products:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    loadProducts();
+    loadProductos();
   }, []);
 
-  return { productos, loading };
+  return { productos, loading, loadProductos };
 };
 
 export default useProductos;
