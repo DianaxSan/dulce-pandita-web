@@ -8,15 +8,19 @@ function AdminProductos() {
 
   return (
     <AdminLayout>
-      <h1>Gestión de Productos</h1>
+      <div className="admin-header">
+        <h1>Gestión de Productos</h1>
+      </div>
 
-      <ProductForm onSuccess={loadProductos} />
+      <div className="admin-form-grid">
+        <ProductForm onSuccess={loadProductos} />
 
-      <ProductList
-        productos={productos}
-        loading={loading}
-        onRefresh={loadProductos}
-      />
+        <ProductList
+          productos={productos}
+          loading={loading}
+          onRefresh={loadProductos}
+        />
+      </div>
     </AdminLayout>
   );
 }

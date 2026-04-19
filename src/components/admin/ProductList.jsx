@@ -11,15 +11,16 @@ function ProductList({ productos, loading, onRefresh }) {
   };
 
   return (
-    <div>
-      <h2>Lista de productos</h2>
+    <div className="admin-panel">
+      <div className="admin-panel-header">
+        <h2>Lista de productos</h2>
+      </div>
 
       {productos.map((p) => (
-        <div key={p.id} style={{ marginBottom: "10px" }}>
+        <div key={p.id} className="admin-card">
           <h3>{p.nombre}</h3>
           <p>S/ {p.precio}</p>
-
-          <button onClick={() => handleDelete(p.id)}>
+          <button onClick={() => handleDelete(p.id)} className="admin-button secondary">
             Eliminar
           </button>
         </div>

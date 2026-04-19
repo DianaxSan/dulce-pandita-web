@@ -54,7 +54,7 @@ function ProductForm({ onSuccess }) {
       });
 
       onSuccess();
-      
+
       setStatus("Producto creado");
       setNombre("");
       setPrecio("");
@@ -67,37 +67,54 @@ function ProductForm({ onSuccess }) {
   };
 
   return (
-    <form onSubmit={subirProducto}>
+    <form onSubmit={subirProducto} className="admin-form">
       <h2>Nuevo producto</h2>
 
-      <input
-        type="text"
-        placeholder="Nombre"
-        value={nombre}
-        onChange={(e) => setNombre(e.target.value)}
-      />
+      <div className="admin-form-group">
+        <label>Nombre</label>
+        <input
+          type="text"
+          className="admin-input"
+          placeholder="Nombre"
+          value={nombre}
+          onChange={(e) => setNombre(e.target.value)}
+        />
+      </div>
 
-      <input
-        type="number"
-        placeholder="Precio"
-        value={precio}
-        onChange={(e) => setPrecio(e.target.value)}
-      />
+      <div className="admin-form-group">
+        <label>Precio</label>
+        <input
+          type="number"
+          className="admin-input"
+          placeholder="Precio"
+          value={precio}
+          onChange={(e) => setPrecio(e.target.value)}
+        />
+      </div>
 
-      <textarea
-        placeholder="Descripción"
-        value={descripcion}
-        onChange={(e) => setDescripcion(e.target.value)}
-      />
+      <div className="admin-form-group full">
+        <label>Descripción</label>
+        <textarea
+          className="admin-textarea"
+          placeholder="Descripción"
+          value={descripcion}
+          onChange={(e) => setDescripcion(e.target.value)}
+        />
+      </div>
 
-      <input type="file" onChange={handleImageChange} />
+      <div className="admin-form-group">
+        <label>Imagen</label>
+        <input type="file" className="admin-file-input" onChange={handleImageChange} />
+      </div>
 
-      {preview && <img src={preview} width="150" />}
+      {preview && <img src={preview} className="admin-preview" />}
 
-      <button type="submit">Guardar</button>
+      <div className="admin-actions">
+        <button type="submit" className="admin-button primary">Guardar</button>
+      </div>
 
-      {status && <p>{status}</p>}
-      {error && <p>{error}</p>}
+      {status && <p className="admin-status">{status}</p>}
+      {error && <p className="admin-error">{error}</p>}
     </form>
   );
 }
