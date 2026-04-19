@@ -1,3 +1,4 @@
+import AdminLayout from "../layouts/AdminLayout";
 import ProductForm from "../components/admin/ProductForm";
 import ProductList from "../components/admin/ProductList";
 import useProductos from "../hooks/useProductos";
@@ -6,7 +7,7 @@ function AdminProductos() {
   const { productos, loading, loadProductos } = useProductos();
 
   return (
-    <div className="admin-main">
+    <AdminLayout>
       <h1>Gestión de Productos</h1>
 
       <ProductForm onSuccess={loadProductos} />
@@ -16,7 +17,7 @@ function AdminProductos() {
         loading={loading}
         onRefresh={loadProductos}
       />
-    </div>
+    </AdminLayout>
   );
 }
 
