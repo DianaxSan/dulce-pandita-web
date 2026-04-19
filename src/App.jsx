@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Admin from "./pages/Admin";
 import Login from "./pages/Login";
-import ProductosAdmin from "./pages/ProductosAdmin";
+import ProductosAdmin from "./pages/AdminProductos";
 import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
