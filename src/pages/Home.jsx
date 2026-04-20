@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { FaWhatsapp, FaCookie, FaGifts, FaUtensils } from "react-icons/fa";
+import { FaWhatsapp, FaCookie, FaGifts, FaUtensils, FaWineGlassAlt } from "react-icons/fa";
 import useProductos from "../hooks/useProductos";
 import MainLayout from "../layouts/MainLayout";
 import logo from "../assets/logo.png";
@@ -73,8 +73,14 @@ function Home() {
 
       <section className="about" id="nosotros">
         <div className="container">
-          <h2>Sobre Dulce Pandita</h2>
-          <p>
+          <div className="about-header">
+            <img src={logo} alt="Logo Dulce Pandita" className="about-logo" />
+            <div>
+              <h2>Sobre Dulce Pandita</h2>
+              <p className="tagline">Con amor a tu casita</p>
+            </div>
+          </div>
+          <p className="about-description">
             En Dulce Pandita creamos deliciosas tortas y bocaditos que hacen tus momentos especiales aún más dulces. Utilizamos ingredientes frescos y de alta calidad para garantizar el mejor sabor en cada bocado.
           </p>
           <div className="features">
@@ -91,6 +97,13 @@ function Home() {
               </div>
               <h3>Bocaditos Deliciosos</h3>
               <p>Pequeñas delicias perfectas para cualquier momento.</p>
+            </div>
+            <div className="feature">
+              <div className="feature-icon">
+                <FaWineGlassAlt />
+              </div>
+              <h3>Cuchareables</h3>
+              <p>Deliciosos postres en vasitos para disfrutar con cuchara.</p>
             </div>
             <div className="feature">
               <div className="feature-icon">
