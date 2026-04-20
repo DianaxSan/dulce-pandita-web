@@ -68,14 +68,14 @@
 .admin-button {
   border: none;
   border-radius: 999px;
-  padding: 0.9rem 1.5rem;
+  padding: 0.6rem 1.2rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
   background: var(--dark);
   color: var(--light);
   font-family: var(--font-primary);
-  font-size: 0.95rem;
+  font-size: 0.9rem;
 }
 
 .admin-button.secondary {
@@ -233,10 +233,10 @@
 .admin-file-input {
   width: 100%;
   border: 1px solid var(--gray-medium);
-  border-radius: 16px;
+  border-radius: 8px;
   background: #ffffff;
-  padding: 1rem 1.1rem;
-  font-size: 1rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.9rem;
   color: #222222;
   font-family: var(--font-primary);
   font-weight: 400;
@@ -252,7 +252,7 @@
 }
 
 .admin-textarea {
-  min-height: 150px;
+  min-height: 80px;
   resize: vertical;
 }
 
@@ -262,9 +262,9 @@
 
 .admin-preview {
   width: 100%;
-  border-radius: 18px;
+  border-radius: 8px;
   margin-top: 1rem;
-  max-height: 260px;
+  max-height: 150px;
   object-fit: cover;
   border: 1px solid var(--gray-medium);
 }
@@ -296,6 +296,33 @@
   margin-top: 0.75rem;
   font-weight: 600;
   font-family: var(--font-primary);
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.admin-table th,
+.admin-table td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid var(--gray-medium);
+}
+
+.admin-table th {
+  background-color: #f8f6f8;
+  font-weight: 600;
+  color: var(--dark);
+}
+
+.admin-table td {
+  color: #222222;
+}
+
+.admin-table tr:hover {
+  background-color: #f9f9f9;
 }
 
 .admin-help {

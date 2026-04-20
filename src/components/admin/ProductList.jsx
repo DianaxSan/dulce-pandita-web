@@ -16,15 +16,30 @@ function ProductList({ productos, loading, onRefresh }) {
         <h2>Lista de productos</h2>
       </div>
 
-      {productos.map((p) => (
-        <div key={p.id} className="admin-card">
-          <h3>{p.nombre}</h3>
-          <p>S/ {p.precio}</p>
-          <button onClick={() => handleDelete(p.id)} className="admin-button secondary">
-            Eliminar
-          </button>
-        </div>
-      ))}
+      <table className="admin-table">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Descripción</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          {productos.map((p) => (
+            <tr key={p.id}>
+              <td>{p.nombre}</td>
+              <td>S/ {p.precio}</td>
+              <td>{p.descripcion}</td>
+              <td>
+                <button onClick={() => handleDelete(p.id)} className="admin-button secondary">
+                  Eliminar
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }
