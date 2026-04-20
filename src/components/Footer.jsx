@@ -1,3 +1,5 @@
+import { FaPhone, FaEnvelope, FaFacebook, FaInstagram, FaWhatsapp } from "react-icons/fa";
+
 function Footer() {
   return (
     <footer className="footer" id="contacto">
@@ -10,16 +12,16 @@ function Footer() {
 
           <div className="footer-section">
             <h3>Contacto</h3>
-            <p>📱 +51 973 914 045</p>
-            <p>📧 info@dulcepandita.com</p>
+            <p><FaPhone /> +51 973 914 045</p>
+            <p><FaEnvelope /> info@dulcepandita.com</p>
           </div>
 
           <div className="footer-section">
             <h3>Síguenos</h3>
             <div className="social-links">
-              <a href="#">Facebook</a>
-              <a href="#">Instagram</a>
-              <a href="#">WhatsApp</a>
+              <a href="#" aria-label="Facebook"><FaFacebook /></a>
+              <a href="#" aria-label="Instagram"><FaInstagram /></a>
+              <a href="#" aria-label="WhatsApp"><FaWhatsapp /></a>
             </div>
           </div>
         </div>

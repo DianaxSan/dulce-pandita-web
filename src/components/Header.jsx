@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { FaBars, FaTimes } from "react-icons/fa";
 import logo from "../assets/logo.png";
 
 function Header() {
@@ -23,7 +24,7 @@ function Header() {
           </nav>
 
           <button className="menu-toggle" onClick={() => setMenuOpen(!menuOpen)}>
-            ☰
+            {menuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
           </button>
         </div>
       </div>
