@@ -351,7 +351,7 @@ h6 { font-size: 1rem; font-weight: 500; }
 
 .features {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
   margin-top: 3rem;
 }
@@ -548,7 +548,8 @@ h6 { font-size: 1rem; font-weight: 500; }
   color: var(--light);
   text-decoration: none;
   transition: all 0.3s ease;
-  padding: 0.7rem 1rem;
+  width: 3rem;
+  height: 3rem;
   border: 2px solid var(--primary);
   border-radius: 50%;
   display: flex;
